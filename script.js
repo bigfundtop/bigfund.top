@@ -462,21 +462,19 @@ function listenEvents() {
 }
 
 // ========================== INITIALIZE ==========================
-window.onload = function(){
-  initChart();
-
-  // ✅ AUTO FILL REFERRAL
-  const params = new URLSearchParams(window.location.search);
-  const ref = params.get("ref");
-
-  if(ref){
+// AUTO-FILL REFERRAL ADDRESS
+function autoFillReferral() {
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref");
     const input = document.getElementById("ref");
-    if(input){
-      input.value = ref;
-    }
-  }
-};
 
+    if (ref && input && ethers.utils.isAddress(ref)) {
+        input.value = ref;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", autoFillReferral);
+autoFillReferral();
 
 // ========================== REWARD CALCULATOR ==========================
 function calculateReward() {
