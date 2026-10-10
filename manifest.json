@@ -1,0 +1,13 @@
+{
+  "name": "Bigfund",
+  "short_name": "Big",
+  "icons": [
+    {
+      "src": "bigfund1.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone"
+}
+ 
