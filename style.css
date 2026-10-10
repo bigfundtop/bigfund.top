@@ -1868,13 +1868,14 @@ box-shadow:
 }
 
 /* Logo */
+/* Center Logo */
 .bigfund-logo {
     display: block;
     width: auto;
     max-width: 190px;
     max-height: 65px;
     object-fit: contain;
-    margin-bottom: 12px;
+    margin: 0 auto 12px;
 }
 
 /* Wallet address / username */
