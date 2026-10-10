@@ -2085,10 +2085,3 @@ box-shadow:
 
 
 
-/* Username on the right side */
-.walletAddress {
-    text-align: right !important;
-    width: 100%;
-    box-sizing: border-box;
-}
-
