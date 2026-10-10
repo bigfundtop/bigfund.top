@@ -84,10 +84,6 @@ function formatUSDT(value) {
     ).toFixed(4);
 }
 
-function formatTime(ts) {
-    return new Date(Number(ts) * 1000).toLocaleString();
-}
-
 // ✅ NEW
 function formatTime(ts){
   return new Date(ts * 1000).toLocaleString();
@@ -113,7 +109,7 @@ async function connectWallet() {
       window.location.href.split("?")[0] + "?ref=" + user;
     
     contract = new ethers.Contract(contractAddress, abi, signer);  
-    usdt = new ethers.Contract(usdtAddress, tokenABI, signer);
+    usdt = new ethers.Contract(usdtAddress, usdtABI, signer);
 
     //======leaderboard=========//
     usernameContract = new ethers.Contract(
@@ -126,6 +122,15 @@ async function connectWallet() {
       
    // Load all user data first
    await loadData();
+
+  await loadUserData();
+
+  document.getElementById("systemBox").style.display = "grid";
+  document.getElementById("userBox").style.display = "none";
+
+  document.getElementById("tabSystem").classList.add("active");
+  document.getElementById("tabUser").classList.remove("active");
+      
       
    // Start leaderboard after the current UI has rendered
     setTimeout(() => {
@@ -230,34 +235,38 @@ async function loadData(){
 }
 
 // ========================== TIMER ==========================
-function startTimers(){
-  setInterval(()=>{
+// ========================== TIMER ==========================
+function startTimers() {
+    if (timerStarted) return;
+    timerStarted = true;
 
-    let now = Math.floor(Date.now()/1000);
+    function updateTimers() {
+        const now = Math.floor(Date.now() / 1000);
+        const start = epochStartFromContract;
+        const duration = epochDurationFromContract;
 
-    let start = epochStartFromContract || now;
-    let duration = epochDurationFromContract || 86400;
+        if (!start || !duration) return;
 
-    let nextEpoch = start + duration;
+        const nextEpoch = start + duration;
+        let remaining = Math.max(0, nextEpoch - now);
 
-    let remaining = nextEpoch - now;
-    if(remaining < 0) remaining = 0;
+        const d = Math.floor(remaining / 86400);
+        remaining %= 86400;
 
-    let d = Math.floor(remaining / 86400);
-    remaining %= 86400;
+        const h = Math.floor(remaining / 3600);
+        remaining %= 3600;
 
-    let h = Math.floor(remaining / 3600);
-    remaining %= 3600;
+        const m = Math.floor(remaining / 60);
+        const s = remaining % 60;
 
-    let m = Math.floor(remaining / 60);
-    let s = remaining % 60;
+        const timeText = `${d}d ${h}h ${m}m ${s}s`;
 
-    let timeText = `${d}d ${h}h ${m}m ${s}s`;
+        document.getElementById("epochTimer").innerText = timeText;
+        document.getElementById("claimTimer").innerText = timeText;
+    }
 
-    document.getElementById("epochTimer").innerText = timeText;
-    document.getElementById("claimTimer").innerText = timeText;
-
-  },1000);
+    updateTimers();
+    setInterval(updateTimers, 1000);
 }
 // ========================== HANDLE TRANSACTIONS ==========================
 async function handleTx(tx){
