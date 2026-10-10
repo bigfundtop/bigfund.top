@@ -301,17 +301,11 @@ async function handleTx(tx){
 }
 
 // ========================== USER ACTIONS ==========================
-async function register() {
-  const ref = document.getElementById("ref").value.trim();
-
-  if (!ethers.utils.isAddress(ref)) {
-    document.getElementById("status").innerText =
-      "Enter a valid referrer wallet address.";
-    return;
-  }
-
+async function register(){
+  const ref = document.getElementById("ref").value;
   handleTx(contract.register(ref));
 }
+
 
 async function approveUSDT() {
   const amount = "10000";
