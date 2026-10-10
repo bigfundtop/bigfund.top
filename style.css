@@ -1845,21 +1845,16 @@ box-shadow:
         0 1px 4px rgba(0,0,0,.45);
 }
 
-
 #rewardPoolTRC,
 #rewardPoolUSDT,
 #lastEpochRewardTRC,
 #lastEpochRewardUSDT,
 #pendingTRC,
-#pendingUSDT{
-    display:inline !important;
+#pendingUSDT {
+    display: inline !important;
+}
 
 
-
-
-
-
-```css
 /* =====================================
    BIGFUND HEADER + INCOME
    PC & MOBILE RESPONSIVE
@@ -2086,7 +2081,7 @@ box-shadow:
         font-size: 19px;
     }
 }
-```
+
 
 
 
