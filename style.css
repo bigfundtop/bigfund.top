@@ -2085,3 +2085,48 @@ box-shadow:
 
 
 
+
+
+
+/* ===== SYSTEM INFO / USER INFO TAB COLORS ===== */
+
+button.tab {
+    background: linear-gradient(
+        135deg,
+        #111318 0%,
+        #242830 55%,
+        #101216 100%
+    ) !important;
+
+    color: #c7cbd2 !important;
+    border: 1px solid rgba(255, 190, 40, 0.25) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05) !important;
+    text-shadow: none !important;
+}
+
+/* ACTIVE TAB */
+button.tab.active {
+    background: linear-gradient(
+        100deg,
+        #6b3b00 0%,
+        #c58a0b 55%,
+        #f5bd32 100%
+    ) !important;
+
+    color: #ffffff !important;
+    border: 1px solid #f5c451 !important;
+
+    box-shadow:
+        0 0 12px rgba(255, 180, 30, 0.22),
+        inset 0 1px 0 rgba(255,255,255,0.16) !important;
+}
+
+/* Smooth transition */
+button.tab {
+    transition: background 0.3s ease,
+                color 0.3s ease,
+                box-shadow 0.3s ease !important;
+}
+
+
+
