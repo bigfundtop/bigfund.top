@@ -2082,3 +2082,25 @@ box-shadow:
 
 
 
+/* FORCE INACTIVE TAB TRANSPARENT */
+.tabs button.tab:not(.active),
+button#tabSystem:not(.active),
+button#tabUser:not(.active) {
+    background: transparent !important;
+    background-image: none !important;
+    color: #aeb5c2 !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    box-shadow: none !important;
+}
+
+/* ACTIVE TAB GOLD */
+.tabs button.tab.active {
+    background: linear-gradient(
+        100deg,
+        #6b3b00,
+        #c58a0b,
+        #f5bd32
+    ) !important;
+    color: #ffffff !important;
+    border: 1px solid #f5c451 !important;
+}
