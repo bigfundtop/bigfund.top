@@ -1859,9 +1859,235 @@ box-shadow:
 
 
 
+```css
+/* =====================================
+   BIGFUND HEADER + INCOME
+   PC & MOBILE RESPONSIVE
+===================================== */
 
-
-
-
-  
+.container {
+    width: min(100% - 32px, 1000px);
+    margin: 0 auto;
+    padding: 18px 0 24px;
+    box-sizing: border-box;
 }
+
+/* Logo */
+.bigfund-logo {
+    display: block;
+    width: auto;
+    max-width: 190px;
+    max-height: 65px;
+    object-fit: contain;
+    margin-bottom: 12px;
+}
+
+/* Wallet address / username */
+.walletAddress {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+/* Connect Wallet button */
+.container > .mainBtn {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    margin-bottom: 18px;
+    border: 1px solid #ffbf35;
+    border-radius: 14px;
+    background: linear-gradient(
+        100deg,
+        #ff7900 0%,
+        #ff9800 48%,
+        #ffc329 100%
+    );
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 153, 0, 0.15);
+    transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.container > .mainBtn:hover {
+    filter: brightness(1.08);
+}
+
+.container > .mainBtn:active {
+    transform: scale(0.99);
+}
+
+/* Income panel */
+.header-income {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: 22px;
+    box-sizing: border-box;
+
+    background: linear-gradient(
+        135deg,
+        #111111 0%,
+        #19150d 55%,
+        #080808 100%
+    );
+
+    border: 1px solid rgba(255, 184, 36, 0.65);
+    border-radius: 18px;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.3);
+}
+
+/* Each income item */
+.header-income > div {
+    min-width: 0;
+    color: #d6d6d6;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Amount */
+.header-income strong {
+    display: block;
+    margin-top: 5px;
+    color: #ffffff;
+    font-size: clamp(18px, 2vw, 25px);
+    font-weight: 800;
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
+}
+
+.header-income strong span {
+    color: #ffbd2e;
+}
+
+/* Withdraw button */
+#withdrawIncomeBtn {
+    width: 190px;
+    min-height: 48px;
+    padding: 12px 16px;
+    border: 1px solid #ffd15a;
+    border-radius: 13px;
+
+    background: linear-gradient(
+        100deg,
+        #ff7900 0%,
+        #ff9900 50%,
+        #ffc329 100%
+    );
+
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 153, 0, 0.15);
+    transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+#withdrawIncomeBtn:hover {
+    filter: brightness(1.08);
+}
+
+#withdrawIncomeBtn:active {
+    transform: scale(0.98);
+}
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (max-width: 700px) {
+    .container {
+        width: calc(100% - 24px);
+        padding-top: 14px;
+    }
+
+    .header-income {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 16px 12px;
+        padding: 16px;
+        border-radius: 15px;
+    }
+
+    #withdrawIncomeBtn {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 480px) {
+    .container {
+        width: calc(100% - 20px);
+        padding-top: 12px;
+    }
+
+    .bigfund-logo {
+        max-width: 150px;
+        max-height: 52px;
+        margin-bottom: 10px;
+    }
+
+    .walletAddress {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .container > .mainBtn {
+        min-height: 46px;
+        margin-bottom: 14px;
+        border-radius: 12px;
+    }
+
+    .header-income {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        padding: 15px;
+        border-radius: 14px;
+    }
+
+    .header-income > div {
+        padding: 12px;
+        border: 1px solid rgba(255, 184, 36, 0.22);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.025);
+        font-size: 13px;
+    }
+
+    .header-income strong {
+        font-size: 22px;
+        margin-top: 4px;
+    }
+
+    #withdrawIncomeBtn {
+        grid-column: auto;
+        width: 100%;
+        min-height: 47px;
+        font-size: 14px;
+    }
+}
+
+/* Small phone */
+@media (max-width: 350px) {
+    .header-income {
+        padding: 10px;
+    }
+
+    .header-income strong {
+        font-size: 19px;
+    }
+}
+```
+
+
+
+
