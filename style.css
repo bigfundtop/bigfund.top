@@ -2128,3 +2128,30 @@ button#tabUser:not(.active) {
     box-shadow: none !important;
 }
 
+
+
+
+
+
+/* Mobile Join Levels - Black Box, 2 Columns */
+@media screen and (max-width: 600px) {
+    #joinLevelsBox {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        background: #000000 !important;
+        padding: 12px !important;
+        border-radius: 10px !important;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    #joinLevelsBox button {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        box-sizing: border-box;
+    }
+}
+
+
