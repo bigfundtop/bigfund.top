@@ -2116,3 +2116,15 @@ button#tabUser:not(.active) {
 }
 
 
+
+
+
+
+/* Completed level buttons */
+#joinLevelsBox button.level-completed {
+    background: linear-gradient(145deg, #292d35, #1b1e25) !important;
+    border: 1px solid #80601b !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
