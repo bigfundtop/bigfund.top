@@ -119,6 +119,12 @@ async function connectWallet() {
     );
      
     await updateWalletDisplay(); 
+
+    const id = await contract.getUserID(user);
+
+    document.getElementById("userIdBadge").innerText =
+        "ID." + id.toString();
+      
     const registered = await contract.isRegistered(user);
 
     document.getElementById("registerBox").style.display =
