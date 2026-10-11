@@ -406,7 +406,7 @@ function listenEvents() {
 
     if(userAddr.toLowerCase() !== user.toLowerCase()) return;
 
-    const showEvent = ()=>{
+    const showEvent = async ()=>{
         document.getElementById("status").innerHTML =
        `✅ Joined Level ${level}<br>
        USDT: ${Number(
@@ -414,6 +414,7 @@ function listenEvents() {
        ).toFixed(4)}`
 
         loadData();
+        loadUserData();
     };
 
     if(txFinished){
