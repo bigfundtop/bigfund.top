@@ -60,7 +60,7 @@ const abi = [
     "function getIncomeBalanceUSDT(address) view returns(uint256)",
     "function getTotalEarnedUSDT(address) view returns(uint256)",
     "function withdrawIncome()",
-
+    "function isRegistered(address) view returns(bool)",
     "function getUserID(address) view returns(uint256)",
     "function getUserJoinEpoch(address) view returns(uint256)",
     "function getUserLastClaimEpoch(address) view returns(uint256)",
@@ -119,6 +119,10 @@ async function connectWallet() {
     );
      
     await updateWalletDisplay(); 
+    const registered = await contract.isRegistered(user);
+
+    document.getElementById("registerBox").style.display =
+        registered ? "none" : "block";  
       
    // Load all user data first
    await loadData();
