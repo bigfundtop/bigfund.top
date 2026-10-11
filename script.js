@@ -453,6 +453,7 @@ function listenEvents() {
          ).toFixed(4)}`;
 
         loadData();
+        loadUserData();
     };
 
     if(txFinished){
