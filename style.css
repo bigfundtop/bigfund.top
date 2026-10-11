@@ -2315,55 +2315,6 @@ button#tabUser:not(.active) {
 
 
 
-/* BIGFUND IMAGE SECTION */
-.bf-fund-section {
-    width: 100%;
-    padding: 25px 10px;
-    box-sizing: border-box;
 
-    /* Premium trustworthy black background */
-    background:
-        radial-gradient(
-            ellipse at 50% 0%,
-            rgba(191, 153, 55, 0.10) 0%,
-            transparent 65%
-        ),
-        linear-gradient(
-            180deg,
-            #101010 0%,
-            #080808 50%,
-            #030303 100%
-        );
-
-    overflow: hidden;
-}
-
-.bf-fund-image-box {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-
-.bf-fund-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-    object-position: center;
-    border-radius: 10px;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-    .bf-fund-section {
-        padding: 12px 6px;
-    }
-
-    .bf-fund-image {
-        border-radius: 6px;
-    }
-}
 
 
