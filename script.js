@@ -693,7 +693,7 @@ async function loadLeaderboard(){
 
         const lastEpoch = currentEpoch - 1;
 
-        if(lastEpoch < 1){
+        if(lastEpoch < 0){
 
             renderLeaderboard([]);
 
