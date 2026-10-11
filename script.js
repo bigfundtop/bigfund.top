@@ -25,7 +25,7 @@ const usernameABI = [
 const contractAddress = "0xE150881070BE107F55C3CEef70F955850464c6fe";
 
 const usdtAddress =
-    "0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
+    "0x482DaDC0F6739Ed69808FbD6021b0A489D42EF30";
 
 const abi = [
     "function currentEpoch() view returns(uint256)",
@@ -314,7 +314,7 @@ async function register() {
 }
 
 async function approveUSDT() {
-  const amount = "10000";
+  const amount = "15000";
   const value = ethers.utils.parseUnits(amount, 6);
 
   handleTx(
