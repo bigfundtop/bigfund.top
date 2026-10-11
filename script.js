@@ -296,6 +296,10 @@ async function handleTx(tx){
 
     await sent.wait();
 
+    // Refresh dashboard immediately after confirmation
+    await loadData();
+    await loadUserData();  
+
     document.getElementById("status").innerHTML =
       `<span class="tx-success">✅ Transaction Confirmed</span>`;
 
@@ -606,6 +610,14 @@ async function loadUserData(){
     )).toFixed(4);
 
     document.getElementById("level").innerText = u[1];
+    // Update completed level button colours
+   const completedLevel = Number(u[1]);
+
+   document.querySelectorAll("#joinLevelsBox button").forEach((btn, i) => {
+       btn.classList.toggle("level-completed", i < completedLevel);
+   });
+
+      
     document.getElementById("baseWeight").innerText = u[2];
     document.getElementById("tempWeight").innerText = u[3];
     document.getElementById("lastClaimEpoch").innerText = u[4];
