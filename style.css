@@ -2155,3 +2155,121 @@ button#tabUser:not(.active) {
 }
 
 
+
+
+/* ==========================
+   BIGFUND ROADMAP
+========================== */
+
+#roadmap {
+    padding: 55px 16px;
+    background: #050505;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+}
+
+#roadmap .container {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+#roadmap h2 {
+    text-align: center;
+    font-size: clamp(25px, 5vw, 36px);
+    font-weight: 800;
+    color: #f5c542;
+    margin: 0 0 35px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 14px rgba(245, 197, 66, 0.15);
+}
+
+/* Roadmap cards */
+#roadmap .roadmap-item {
+    position: relative;
+    padding: 19px 22px;
+    margin: 0 0 16px;
+    background: linear-gradient(135deg, #151515, #090909);
+    border: 1px solid rgba(245, 197, 66, 0.38);
+    border-left: 4px solid #d9a928;
+    border-radius: 12px;
+    color: #e8e8e8;
+    font-size: 15px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+#roadmap .roadmap-item strong {
+    display: inline-block;
+    color: #ffd45c;
+    font-size: 16px;
+    font-weight: 800;
+    margin-right: 5px;
+}
+
+/* Hover effect */
+@media (hover: hover) {
+    #roadmap .roadmap-item:hover {
+        transform: translateY(-3px);
+        border-color: #f5c542;
+        box-shadow: 0 8px 24px rgba(245, 197, 66, 0.10);
+    }
+}
+
+/* Completed phases */
+#roadmap .roadmap-item:nth-of-type(2),
+#roadmap .roadmap-item:nth-of-type(3) {
+    border-left-color: #26c77a;
+}
+
+/* Upcoming phases */
+#roadmap .roadmap-item:nth-of-type(n+4) {
+    border-left-color: #d9a928;
+}
+
+/* ==========================
+   MOBILE RESPONSIVE
+========================== */
+
+@media (max-width: 600px) {
+    #roadmap {
+        padding: 35px 13px;
+    }
+
+    #roadmap .container {
+        max-width: 100%;
+    }
+
+    #roadmap h2 {
+        font-size: 26px;
+        margin-bottom: 24px;
+    }
+
+    #roadmap .roadmap-item {
+        padding: 14px 14px;
+        margin-bottom: 12px;
+        border-radius: 10px;
+        font-size: 13.5px;
+        line-height: 1.6;
+    }
+
+    #roadmap .roadmap-item strong {
+        font-size: 14px;
+        margin-right: 3px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #roadmap .roadmap-item {
+        transition: none;
+    }
+}
+
+
+
+
