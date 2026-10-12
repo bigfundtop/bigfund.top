@@ -2354,3 +2354,15 @@ button#tabUser:not(.active) {
 }
 
 
+
+
+/* IMPORTANT - CONNECT WALLET BUTTON */
+button.mainBtn {
+    width: 80% !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+
