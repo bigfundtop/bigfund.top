@@ -728,13 +728,13 @@ async function loadLeaderboard(){
 // READ EVENTS (DEBUG)
 // ==========================
 
-const DEPLOY_BLOCK = 95276178;
+const DEPLOY_BLOCK = 95340666;
 
 const latestBlock = await provider.getBlockNumber();
 
 const epochSeconds = Number(await contract.getEpochDuration());
 
-const avgBlockTime = 1.6;
+const avgBlockTime = 1.5;
 
 const blocksPerEpoch = Math.ceil(epochSeconds / avgBlockTime);
 
