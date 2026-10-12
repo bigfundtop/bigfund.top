@@ -2367,7 +2367,13 @@ button.mainBtn {
 
 
 
-
+button.approveUSDTBtn {
+    width: 97% !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
 
 
 
