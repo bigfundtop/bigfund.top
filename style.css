@@ -2368,12 +2368,23 @@ button.mainBtn {
 
 
 button.approveUSDTBtn {
-    width: 97% !important;
+    width: 93% !important;
     display: block !important;
     margin-left: auto !important;
     margin-right: auto !important;
     box-sizing: border-box !important;
 }
 
+
+
+
+
+button.claimRewardBtn {
+    width: 95% !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
 
 
