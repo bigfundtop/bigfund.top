@@ -2358,7 +2358,7 @@ button#tabUser:not(.active) {
 
 /* IMPORTANT - CONNECT WALLET BUTTON */
 button.mainBtn {
-    width: 92% !important;
+    width: 97% !important;
     display: block !important;
     margin-left: auto !important;
     margin-right: auto !important;
