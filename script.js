@@ -601,7 +601,12 @@ async function loadUserData(){
 
     const u = await contract.users(user);
 
-
+    document.getElementById("totalInvestedUSDT").innerText =
+    Number(ethers.utils.formatUnits(
+        await contract.getTotalInvestedUSDT(user), 6
+    )).toFixed(4);
+      
+     
     document.getElementById("userEarnedUSDT").innerText =
        Number(ethers.utils.formatUnits(
           await contract.getTotalEarnedUSDT(user), 6
