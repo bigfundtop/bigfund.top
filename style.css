@@ -2661,8 +2661,8 @@ button.claimRewardBtn {
 
 @media (max-width: 360px) {
     .big-coin-logo-box {
-        width: 65px;
-        height: 65px;
+        width: 60px;
+        height: 60px;
     }
 
     .big-coin-header h2 {
