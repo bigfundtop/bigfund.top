@@ -868,7 +868,7 @@ async function loadLeaderboard(){
 // READ EVENTS (DEBUG)
 // ==========================
 
-const DEPLOY_BLOCK = 95617916;
+const DEPLOY_BLOCK = 95632824;
 
 const latestBlock = await provider.getBlockNumber();
 
