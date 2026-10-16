@@ -4,12 +4,17 @@ let signer;
 let contract;
 let usdt;
 let user;
+let bigToken;
 let txFinished = false;
 let epochDurationFromContract = 0;
 let epochStartFromContract = 0;
 let timerStarted = false;
 let leaderboard = [];
 let usernameContract;
+
+// BIGFUNDToken deployed contract address
+const bigTokenAddress = "0x5c3512dE2C4C5470700C61B332851445180E4C7f";
+
 
 const usernameContractAddress =
     "0x1cAe50821fEEd59f4c0a2C45cB010E859Cbdb5B9";
@@ -77,6 +82,15 @@ const usdtABI = [
 ];
 
 
+const bigTokenABI = [
+    "function claimLevelReward()",
+    "function availableForClaim(address) view returns(uint256)",
+    "function stakedCoins(address) view returns(uint256)",
+    "function levelRewardMintingEnabled() view returns(bool)",
+    "function balanceOf(address) view returns(uint256)"
+];
+
+
 // ========================== HELPERS ==========================
 function formatUSDT(value) {
     return Number(
@@ -110,6 +124,12 @@ async function connectWallet() {
     
     contract = new ethers.Contract(contractAddress, abi, signer);  
     usdt = new ethers.Contract(usdtAddress, usdtABI, signer);
+      
+    bigToken = new ethers.Contract(
+       bigTokenAddress,
+       bigTokenABI,
+       signer
+    );
 
     //======leaderboard=========//
     usernameContract = new ethers.Contract(
@@ -137,6 +157,8 @@ async function connectWallet() {
    await loadData();
 
   await loadUserData();
+
+  await loadBigCoinData();   
 
   document.getElementById("systemBox").style.display = "grid";
   document.getElementById("userBox").style.display = "none";
@@ -302,6 +324,7 @@ async function handleTx(tx){
     // Refresh dashboard immediately after confirmation
     await loadData();
     await loadUserData();  
+    await loadBigCoinData();
 
     document.getElementById("status").innerHTML =
       `<span class="tx-success">✅ Transaction Confirmed</span>`;
@@ -354,6 +377,115 @@ async function joinLevel(l){
 
 async function claimReward(){
   handleTx(contract.claimReward());
+}
+
+
+
+async function loadBigCoinData() {
+    const availableEl = document.getElementById("availableBigCoins");
+    const claimedEl = document.getElementById("totalClaimedBigCoins");
+    const button = document.getElementById("claimBigCoinsBtn");
+    const status = document.getElementById("bigCoinStatus");
+
+    if (!bigToken || !user) {
+        availableEl.innerText = "0.00";
+        claimedEl.innerText = "0.00";
+        button.disabled = true;
+        button.innerText = "Connect Wallet to Claim";
+        return;
+    }
+
+    try {
+        availableEl.innerText = "Loading...";
+        claimedEl.innerText = "Loading...";
+
+        const results = await Promise.all([
+            bigToken.availableForClaim(user),
+            bigToken.stakedCoins(user),
+            bigToken.levelRewardMintingEnabled()
+        ]);
+
+        const available = results[0];
+        const claimed = results[1];
+        const enabled = results[2];
+
+        availableEl.innerText =
+            Number(ethers.utils.formatUnits(available, 18)).toLocaleString(
+                "en-US",
+                { maximumFractionDigits: 2 }
+            );
+
+        claimedEl.innerText =
+            Number(ethers.utils.formatUnits(claimed, 18)).toLocaleString(
+                "en-US",
+                { maximumFractionDigits: 2 }
+            );
+
+        const canClaim = enabled && available.gt(0);
+
+        button.disabled = !canClaim;
+        button.innerText = !enabled
+            ? "Claims Temporarily Disabled"
+            : canClaim
+                ? "Claim BIG Coins"
+                : "No Coins Available";
+
+        status.innerText = !enabled
+            ? "BIG coin claims are currently disabled."
+            : canClaim
+                ? "Your eligible, unclaimed level rewards are ready."
+                : "No unclaimed level rewards. Complete another level to earn more.";
+
+    } catch (err) {
+        console.error("BIG coin data error:", err);
+        availableEl.innerText = "--";
+        claimedEl.innerText = "--";
+        button.disabled = true;
+        button.innerText = "Unable to Load Coins";
+        status.innerText =
+            "Could not load BIG coin data. Check the token contract address and network.";
+    }
+}
+
+
+async function claimBigCoins() {
+    if (!bigToken || !user) {
+        document.getElementById("bigCoinStatus").innerText =
+            "Please connect your wallet first.";
+        return;
+    }
+
+    const button = document.getElementById("claimBigCoinsBtn");
+    const status = document.getElementById("bigCoinStatus");
+
+    try {
+        button.disabled = true;
+        button.innerText = "Confirm in Wallet...";
+        status.innerText = "Please confirm the transaction in your wallet.";
+
+        const tx = await bigToken.claimLevelReward();
+
+        button.innerText = "Claiming...";
+        status.innerText = "Transaction submitted. Waiting for confirmation...";
+
+        await tx.wait();
+
+        await loadBigCoinData();
+
+        // Refresh main dashboard in case the level or other data changed.
+        await loadUserData();
+
+        status.innerText = "BIG coins claimed successfully!";
+    } catch (err) {
+        console.error("BIG coin claim error:", err);
+
+        status.innerText =
+            err?.code === 4001
+                ? "Transaction cancelled in wallet."
+                : (err?.reason || err?.error?.message || "Claim failed. Check the wallet and contract.");
+
+        await loadBigCoinData();
+    }
 }
 
 
