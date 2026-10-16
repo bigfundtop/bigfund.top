@@ -475,7 +475,7 @@ async function claimBigCoins() {
         // Refresh main dashboard in case the level or other data changed.
         await loadUserData();
 
-        status.innerText = "BIG coins claimed successfully!";
+        status.innerText = "BIG coins claimed successfully✅";
     } catch (err) {
         console.error("BIG coin claim error:", err);
 
