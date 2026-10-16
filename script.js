@@ -770,7 +770,7 @@ async function loadUserData(){
     const snapshot = await contract.getLastEpochRewardSnapshot();
 
    document.getElementById("lastEpochRewardUSDT").innerText =
-      Number(ethers.utils.formatUnits(snapshot, 6)).toFixed(4);
+      Number(ethers.utils.formatUnits(snapshot, 6)).toFixed(2);
 
     document.getElementById("epochWeight").innerText =
       await contract.epochTotalWeight();
