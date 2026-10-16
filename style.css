@@ -2603,3 +2603,73 @@ button.claimRewardBtn {
 
 
 
+
+
+/* BIGFUND COIN LOGO — RESPONSIVE */
+.big-coin-logo-box {
+    width: clamp(48px, 8vw, 76px);
+    height: clamp(48px, 8vw, 76px);
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.big-coin-logo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .big-coin-header {
+        gap: 10px;
+        align-items: center;
+    }
+
+    .big-coin-header > div:first-child {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .big-coin-header h2 {
+        font-size: 21px;
+        line-height: 1.25;
+    }
+
+    .big-coin-subtitle {
+        font-size: 12px;
+    }
+
+    .big-coin-logo-box {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+@media (max-width: 360px) {
+    .big-coin-logo-box {
+        width: 40px;
+        height: 40px;
+    }
+
+    .big-coin-header h2 {
+        font-size: 18px;
+    }
+}
+
+
+
+
