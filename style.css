@@ -2556,3 +2556,50 @@ button.claimRewardBtn {
 
 
 
+/* BIG COIN LISTING PROMOTION */
+.big-coin-listing {
+    margin-top: 18px;
+    padding: 17px 14px;
+    text-align: center;
+    border: 1px solid rgba(217, 183, 91, 0.35);
+    border-radius: 13px;
+    background: linear-gradient(135deg, #171a20, #211c10);
+}
+
+.listing-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    margin-bottom: 9px;
+    border-radius: 20px;
+    background: rgba(217, 183, 91, 0.14);
+    color: #e7c96f;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.big-coin-listing h3 {
+    margin: 3px 0 9px;
+    color: #f5d77d;
+    font-size: clamp(18px, 4vw, 23px);
+    font-weight: 800;
+}
+
+.big-coin-listing p {
+    margin: 0 0 7px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.big-coin-listing small {
+    display: block;
+    color: #b9c2ce;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+
+
