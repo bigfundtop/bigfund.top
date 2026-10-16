@@ -236,12 +236,12 @@ async function loadData(){
   const rewards = await contract.pendingReward(user);
 
   document.getElementById("pendingUSDT").innerText =
-    Number(ethers.utils.formatUnits(rewards, 6)).toFixed(4);
+    Number(ethers.utils.formatUnits(rewards, 6)).toFixed(2);
 
   const rewardPoolUSDT = await contract.rewardPoolUSDT();
  
     document.getElementById("rewardPoolUSDT").innerText =
-      Number(ethers.utils.formatUnits(rewardPoolUSDT, 6)).toFixed(4);
+      Number(ethers.utils.formatUnits(rewardPoolUSDT, 6)).toFixed(2);
     
 
     // ✅ FETCH EPOCH START
