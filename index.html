@@ -81,6 +81,51 @@ Connect Wallet
 </div>
 
 
+
+<!-- BIG COIN REWARDS -->
+<div class="card big-coin-card">
+    <div class="big-coin-header">
+        <div>
+            <p class="big-coin-label">BIGFUND TOKEN</p>
+            <h2>BIG Coin Rewards</h2>
+            <p class="big-coin-subtitle">
+                Claim rewards for your completed levels
+            </p>
+        </div>
+        <div class="big-coin-icon">B</div>
+    </div>
+
+    <div class="big-coin-grid">
+        <div class="big-coin-stat available-stat">
+            <span>Available to Claim</span>
+            <strong id="availableBigCoins">0.00</strong>
+            <small>BIG</small>
+        </div>
+
+        <div class="big-coin-stat">
+            <span>Total Claimed Coins</span>
+            <strong id="totalClaimedBigCoins">0.00</strong>
+            <small>BIG</small>
+        </div>
+    </div>
+
+    <button
+        id="claimBigCoinsBtn"
+        class="claim-big-coins-btn"
+        onclick="claimBigCoins()"
+        disabled
+    >
+        Connect Wallet to Claim
+    </button>
+
+    <p id="bigCoinStatus" class="big-coin-status">
+        Connect your wallet to view your BIG coin rewards.
+    </p>
+</div>
+
+
+
+  
 <div class="card">
 
 <h2>Dashboard</h2>
