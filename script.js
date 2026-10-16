@@ -736,18 +736,18 @@ async function loadUserData(){
     document.getElementById("totalInvestedUSDT").innerText =
     Number(ethers.utils.formatUnits(
         await contract.getTotalInvestedUSDT(user), 6
-    )).toFixed(4);
+    )).toFixed(2);
       
      
     document.getElementById("userEarnedUSDT").innerText =
        Number(ethers.utils.formatUnits(
           await contract.getTotalEarnedUSDT(user), 6
-    )).toFixed(4);
+    )).toFixed(2);
 
    document.getElementById("incomeBalanceUSDT").innerText =
        Number(ethers.utils.formatUnits(
           await contract.getIncomeBalanceUSDT(user), 6
-    )).toFixed(4);
+    )).toFixed(2);
 
     document.getElementById("level").innerText = u[1];
     // Update completed level button colours
