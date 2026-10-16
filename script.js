@@ -27,7 +27,7 @@ const usernameABI = [
 ];
 
 // Replace with your NEW deployed BigFund rewards contract address.
-const contractAddress = "0x4a3C5e9c8f304A6d2C5d079F7a01802cee435181";
+const contractAddress = "0x0e23f842Bc7cf0b82b29AE2Be1ddbd853b48e081";
 
 const usdtAddress =
     "0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
