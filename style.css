@@ -933,6 +933,15 @@ LEADERBOARD
     display:flex;
     flex-direction:column;
     gap:15px;
+  
+    height:400px !important;
+    max-height:400px !important;
+    overflow-y:auto !important;
+    overflow-x:hidden !important;
+
+    flex-shrink:0;
+    box-sizing:border-box;
+    -webkit-overflow-scrolling:touch;
 
 }
 
@@ -2996,31 +3005,3 @@ button.mainBtn {
 
 
 
-
-
-/* FIX: SCROLL ONLY LEADERBOARD MEMBERS */
-
-.leaderboard-card#leaderboardSection {
-    display: flex !important;
-    flex-direction: column !important;
-    height: auto !important;
-    max-height: none !important;
-    min-height: 0 !important;
-    overflow: hidden !important;
-}
-
-#leaderboardSection > .leader-header {
-    flex: 0 0 auto !important;
-}
-
-#leaderboardSection > #leaderboard {
-    display: block !important;
-    height: 400px !important;
-    min-height: 0 !important;
-    max-height: 400px !important;
-    overflow-y: auto !important;
-    overflow-x: hidden !important;
-    flex: 0 0 400px !important;
-    box-sizing: border-box !important;
-    -webkit-overflow-scrolling: touch;
-}
