@@ -2995,21 +2995,32 @@ button.mainBtn {
 
 
 
-/* LEADERBOARD - ONLY MEMBERS LIST SCROLL */
-#leaderboardSection {
+
+
+
+/* FIX: SCROLL ONLY LEADERBOARD MEMBERS */
+
+.leaderboard-card#leaderboardSection {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    max-height: none !important;
+    min-height: 0 !important;
     overflow: hidden !important;
 }
 
 #leaderboardSection > .leader-header {
-    position: relative !important;
+    flex: 0 0 auto !important;
 }
 
 #leaderboardSection > #leaderboard {
-    height: 400px !important;
-    max-height: 400px !important;
-    overflow-y: scroll !important;
-    overflow-x: hidden !important;
     display: block !important;
+    height: 400px !important;
+    min-height: 0 !important;
+    max-height: 400px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    flex: 0 0 400px !important;
     box-sizing: border-box !important;
     -webkit-overflow-scrolling: touch;
 }
