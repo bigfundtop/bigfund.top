@@ -2994,4 +2994,6 @@ button.mainBtn {
 
 
 
-
+#leaderboard .leader-item {
+    margin-bottom: 4px !important;
+}
