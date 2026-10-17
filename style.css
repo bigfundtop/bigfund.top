@@ -2976,5 +2976,6 @@ html {
 
 
 .menu-btn {
-  top: 25px !important;
+  position: fixed !important;
+  transform: translateY(20px);
 }
