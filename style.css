@@ -2863,3 +2863,86 @@ html {
 #faq {
   scroll-margin-top: 76px;
 }
+
+
+
+
+
+
+
+
+
+/* MENU - TOP RIGHT */
+.menu-btn {
+  position: fixed !important;
+  top: 12px !important;
+  right: 12px !important;
+  left: auto !important;
+  z-index: 99999;
+
+  width: 48px;
+  height: 48px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #ff8a00, #ffb91f);
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+  font-size: 28px;
+  box-shadow: 0 4px 15px #ff980044;
+}
+
+/* MENU PANEL - RIGHT SIDE */
+.my-menu {
+  position: fixed !important;
+  top: 68px !important;
+  right: 12px !important;
+  left: auto !important;
+  z-index: 99999;
+
+  width: min(280px, calc(100vw - 24px));
+  max-height: 75vh;
+  overflow-y: auto;
+
+  background: #111;
+  border: 1px solid #c99b37;
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 10px 30px #000a;
+}
+
+/* LOGO CENTER */
+.bigfund-logo {
+  display: block;
+  width: 180px;
+  max-width: 65%;
+  height: auto;
+  margin: 75px auto 20px;
+  object-fit: contain;
+}
+
+/* CONNECT WALLET SPACING */
+.mainBtn {
+  display: block;
+  width: calc(100% - 24px);
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .bigfund-logo {
+    width: 180px;
+    margin-top: 75px;
+    margin-bottom: 20px;
+  }
+
+  .mainBtn {
+    width: calc(100% - 24px);
+    min-height: 54px;
+  }
+}
