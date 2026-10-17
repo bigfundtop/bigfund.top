@@ -21,6 +21,21 @@
 
 <body>
 
+
+<button class="menu-btn" onclick="document.getElementById('myMenu').style.display = document.getElementById('myMenu').style.display === 'block' ? 'none' : 'block'">☰</button>
+
+<div id="myMenu" class="my-menu">
+  <button onclick="connectWallet()">🔗 Connect Wallet</button>
+  <a href="#registerBox">Register</a>
+  <a href="#dashboardSection">Dashboard</a>
+  <a href="#joinLevelsSection">Join Levels</a>
+  <a href="#claimRewardSection">Claim Reward</a>
+  <a href="#referralSection">Referral Link</a>
+  <a href="#leaderboardSection">Leaderboard</a>
+  <a href="#roadmap">Roadmap</a>
+  <a href="#faq">FAQ</a>
+</div>
+  
 <div class="container">
 
 <img src="bigfund1.png" alt="bigfund Logo" class="bigfund-logo">
@@ -157,8 +172,9 @@ Connect Wallet
 
 
   
-<div class="card">
 
+<div class="card" id="dashboardSection">
+  
 <h2>Dashboard</h2>
 
 <div class="tabs">
@@ -211,8 +227,9 @@ Connect Wallet
   <button class="approveUSDTBtn" onclick="approveUSDT()">Approve USDT</button>
 </div>
 
-<div class="card">
 
+<div class="card" id="joinLevelsSection">
+  
 <h2>Join Levels</h2>
 
 <div class="grid" id="joinLevelsBox">
@@ -231,7 +248,8 @@ Connect Wallet
 
 </div>
 
-<div class="card">
+
+<div class="card" id="claimRewardSection">
 <h2>Claim Reward</h2>
 <button class="claimRewardBtn" onclick="claimReward()">Claim weekly Royalty</button>
 </div>
