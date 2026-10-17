@@ -2673,3 +2673,193 @@ button.claimRewardBtn {
 
 
 
+
+
+
+
+
+
+/* ===== BIGFUND PREMIUM MOBILE MENU ===== */
+
+.menu-btn {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 99999;
+
+  width: 48px;
+  height: 48px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(145deg, #242424, #080808);
+  color: #f5d77b;
+  border: 1px solid rgba(218, 181, 91, 0.8);
+  border-radius: 14px;
+
+  font-size: 27px;
+  line-height: 1;
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.menu-btn:active {
+  transform: scale(0.94);
+}
+
+/* MENU PANEL */
+
+.my-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  right: 14px;
+  z-index: 99999;
+
+  width: min(290px, calc(100vw - 28px));
+  max-height: calc(100dvh - 92px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  padding: 10px;
+  box-sizing: border-box;
+
+  background: linear-gradient(160deg, #1b1b1b, #080808 80%);
+  border: 1px solid rgba(218, 181, 91, 0.55);
+  border-radius: 18px;
+
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  scrollbar-width: thin;
+  scrollbar-color: #9c7b35 #111;
+}
+
+/* MENU LINKS + BUTTON */
+
+.my-menu a,
+.my-menu button {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+
+  width: 100%;
+  min-height: 48px;
+  padding: 13px 14px;
+  margin: 3px 0;
+
+  background: transparent;
+  color: #f2f2f2;
+
+  border: 1px solid transparent;
+  border-radius: 11px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+  text-decoration: none;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* GOLD CONNECT WALLET BUTTON */
+
+.my-menu button {
+  justify-content: flex-start;
+  background: linear-gradient(135deg, #f6df98, #c49a3a);
+  color: #17120a;
+  border-color: #f5d77b;
+  font-weight: 800;
+  margin-bottom: 9px;
+}
+
+/* TOUCH / HOVER EFFECT */
+
+@media (hover: hover) {
+  .my-menu a:hover {
+    background: rgba(218, 181, 91, 0.1);
+    color: #f5d77b;
+    border-color: rgba(218, 181, 91, 0.25);
+  }
+
+  .my-menu button:hover {
+    filter: brightness(1.08);
+  }
+}
+
+.my-menu a:active,
+.my-menu button:active {
+  transform: scale(0.985);
+}
+
+/* MOBILE SCREEN */
+
+@media (max-width: 600px) {
+  .menu-btn {
+    top: 10px;
+    right: 10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
+  .my-menu {
+    top: 62px;
+    right: 10px;
+    width: min(280px, calc(100vw - 20px));
+    max-height: calc(100dvh - 76px);
+    border-radius: 15px;
+  }
+
+  .my-menu a,
+  .my-menu button {
+    min-height: 46px;
+    padding: 12px;
+    font-size: 14px;
+  }
+}
+
+/* ACCESSIBILITY */
+
+.menu-btn:focus-visible,
+.my-menu a:focus-visible,
+.my-menu button:focus-visible {
+  outline: 2px solid #f5d77b;
+  outline-offset: 3px;
+}
+
+/* SMOOTH SECTION NAVIGATION */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+}
+
+#registerBox,
+#dashboardSection,
+#joinLevelsSection,
+#claimRewardSection,
+#referralSection,
+#leaderboardSection,
+#roadmap,
+#faq {
+  scroll-margin-top: 76px;
+}
