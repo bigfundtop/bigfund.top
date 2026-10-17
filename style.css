@@ -2918,7 +2918,7 @@ html {
 /* LOGO CENTER */
 .bigfund-logo {
   display: block;
-  width: 180px;
+  width: 160px;
   max-width: 65%;
   height: auto;
   margin: 75px auto 20px;
@@ -2967,4 +2967,9 @@ html {
 }
 
 
+
+.menu-btn {
+  width: 30px !important;
+  height: 30px !important;
+}
 
