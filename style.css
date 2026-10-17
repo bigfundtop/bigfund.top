@@ -3000,7 +3000,7 @@ button.mainBtn {
 }
 
 #leaderboard {
-    max-height: 500px !important;
+    max-height: 200px !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
 }
