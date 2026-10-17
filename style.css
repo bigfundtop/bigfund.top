@@ -2990,3 +2990,17 @@ button.mainBtn {
 .bigfund-logo {
     width: 150px !important;    
 }
+
+
+
+
+
+#leaderboardSection {
+    overflow: hidden !important;
+}
+
+#leaderboard {
+    max-height: 500px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
