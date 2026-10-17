@@ -2995,12 +2995,21 @@ button.mainBtn {
 
 
 
+/* LEADERBOARD - ONLY MEMBERS LIST SCROLL */
 #leaderboardSection {
     overflow: hidden !important;
 }
 
-#leaderboard {
-    max-height: 200px !important;
-    overflow-y: auto !important;
+#leaderboardSection > .leader-header {
+    position: relative !important;
+}
+
+#leaderboardSection > #leaderboard {
+    height: 400px !important;
+    max-height: 400px !important;
+    overflow-y: scroll !important;
     overflow-x: hidden !important;
+    display: block !important;
+    box-sizing: border-box !important;
+    -webkit-overflow-scrolling: touch;
 }
