@@ -1304,8 +1304,8 @@ document.querySelectorAll('#myMenu a, #myMenu button').forEach(function(item) {
     if (!list) return;
 
     list.style.display = "block";
-    list.style.height = "300px";
-    list.style.maxHeight = "400px";
+    list.style.height = "250px";
+    list.style.maxHeight = "250px";
     list.style.overflowY = "auto";
     list.style.overflowX = "hidden";
     list.style.touchAction = "pan-y";
