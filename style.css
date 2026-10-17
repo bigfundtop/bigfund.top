@@ -2958,3 +2958,10 @@ html {
   margin-bottom: 20px !important;
   padding: 0 !important;
 }
+
+
+/* REDUCE SPACE ABOVE CONNECT WALLET */
+.mainBtn {
+  margin-top: 5px !important;
+  padding-top: 6px !important;
+}
