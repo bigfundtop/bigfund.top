@@ -1287,3 +1287,9 @@ async function setOrEditUsername(){
 }
 
 
+
+document.querySelectorAll('#myMenu a, #myMenu button').forEach(function(item) {
+  item.addEventListener('click', function() {
+    document.getElementById('myMenu').style.display = 'none';
+  });
+});
