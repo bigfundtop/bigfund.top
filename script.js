@@ -1293,3 +1293,25 @@ document.querySelectorAll('#myMenu a, #myMenu button').forEach(function(item) {
     document.getElementById('myMenu').style.display = 'none';
   });
 });
+
+
+
+
+
+/* LEADERBOARD TOUCH SCROLL */
+(function () {
+    const list = document.getElementById("leaderboard");
+    if (!list) return;
+
+    list.style.display = "block";
+    list.style.height = "300px";
+    list.style.maxHeight = "400px";
+    list.style.overflowY = "auto";
+    list.style.overflowX = "hidden";
+    list.style.touchAction = "pan-y";
+    list.style.webkitOverflowScrolling = "touch";
+
+    list.addEventListener("touchmove", function (e) {
+        e.stopPropagation();
+    }, { passive: true });
+})();
