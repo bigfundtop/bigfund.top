@@ -152,6 +152,9 @@ async function connectWallet() {
 
     document.getElementById("welcomePromoBox").style.display =
         registered ? "none" : "block"; 
+
+    document.getElementById("welcomePromoBox1").style.display =
+        registered ? "none" : "block";  
       
    // Load all user data first
    await loadData();
