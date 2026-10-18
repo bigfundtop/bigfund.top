@@ -3002,5 +3002,9 @@ button.mainBtn {
 
 
 .menu-btn {
-    margin-top: 50px !important;
+    margin-top: 40px !important;
+}
+
+.my-menu {
+    margin-top: 60px !important;
 }
