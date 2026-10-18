@@ -1318,9 +1318,4 @@ document.querySelectorAll('#myMenu a, #myMenu button').forEach(function(item) {
 
 
 
-const menuBtn = document.querySelector(".menu-btn");
 
-if (menuBtn) {
-    menuBtn.style.setProperty("position", "fixed", "important");
-    menuBtn.style.setProperty("z-index", "9999", "important");
-}
