@@ -1331,17 +1331,20 @@ window.addEventListener("scroll", function () {
 
 
 
+
 window.addEventListener("scroll", function () {
     const btn = document.querySelector(".menu-btn");
     if (!btn) return;
 
     if (window.scrollY > 50) {
-        btn.style.position = "fixed";
-        btn.style.right = "4px";
-        btn.style.left = "auto";
+        btn.style.setProperty("position", "fixed", "important");
+        btn.style.setProperty("right", "4px", "important");
+        btn.style.setProperty("left", "auto", "important");
+        btn.style.setProperty("z-index", "99999", "important");
     } else {
-        btn.style.position = "";
-        btn.style.right = "";
-        btn.style.left = "";
+        btn.style.removeProperty("position");
+        btn.style.removeProperty("right");
+        btn.style.removeProperty("left");
+        btn.style.removeProperty("z-index");
     }
 });
