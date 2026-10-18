@@ -1327,5 +1327,10 @@ window.addEventListener("scroll", function () {
     btn.style.transform = window.scrollY > 50
         ? "scale(0.5)"
         : "scale(1)";
+    btn.style.position = window.scrollY > 50 ? "fixed" : "";
+    btn.style.right = window.scrollY > 50 ? "6px" : "";
+    btn.style.left = window.scrollY > 50 ? "auto" : "";
+    btn.style.top = window.scrollY > 50 ? "10px" : "";
+    btn.style.zIndex = "9999";
 });
 
