@@ -1319,3 +1319,13 @@ document.querySelectorAll('#myMenu a, #myMenu button').forEach(function(item) {
 
 
 
+
+window.addEventListener("scroll", function () {
+    const btn = document.querySelector(".menu-btn");
+    if (!btn) return;
+
+    btn.style.transform = window.scrollY > 50
+        ? "scale(0.5)"
+        : "scale(1)";
+});
+
