@@ -1338,7 +1338,7 @@ window.addEventListener("scroll", function () {
 
     if (window.scrollY > 50) {
         btn.style.setProperty("position", "fixed", "important");
-        btn.style.setProperty("right", "4px", "important");
+        btn.style.setProperty("right", "1px", "important");
         btn.style.setProperty("left", "auto", "important");
         btn.style.setProperty("z-index", "99999", "important");
     } else {
