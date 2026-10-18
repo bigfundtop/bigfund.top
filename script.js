@@ -1329,3 +1329,19 @@ window.addEventListener("scroll", function () {
         : "scale(1)";
 });
 
+
+
+window.addEventListener("scroll", function () {
+    const btn = document.querySelector(".menu-btn");
+    if (!btn) return;
+
+    if (window.scrollY > 50) {
+        btn.style.position = "fixed";
+        btn.style.right = "4px";
+        btn.style.left = "auto";
+    } else {
+        btn.style.position = "";
+        btn.style.right = "";
+        btn.style.left = "";
+    }
+});
