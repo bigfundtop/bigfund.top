@@ -13,7 +13,7 @@ let leaderboard = [];
 let usernameContract;
 
 // BIGFUNDToken deployed contract address
-const bigTokenAddress = "0x5c3512dE2C4C5470700C61B332851445180E4C7f";
+const bigTokenAddress = "0x4DDCC6D9ae0B793d6a5351d8E6AcCcF1949f3D77";
 
 
 const usernameContractAddress =
@@ -27,7 +27,7 @@ const usernameABI = [
 ];
 
 // Replace with your NEW deployed BigFund rewards contract address.
-const contractAddress = "0x0e23f842Bc7cf0b82b29AE2Be1ddbd853b48e081";
+const contractAddress = "0x9F2F339E1623482C913f89957E91be44514036C5";
 
 const usdtAddress =
     "0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
