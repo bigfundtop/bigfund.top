@@ -471,49 +471,7 @@ async function claimReward(){
 
 
 async function claimMonthlyRoyalty() {
-    if (!contract || !user) {
-        document.getElementById("monthlyRoyaltyStatus").innerText =
-            "Please connect your wallet first.";
-        return;
-    }
-
-    const button =
-        document.getElementById("claimMonthlyRoyaltyBtn");
-
-    const status =
-        document.getElementById("monthlyRoyaltyStatus");
-
-    try {
-        button.disabled = true;
-        button.innerText = "Confirm in Wallet...";
-        status.innerText = "Please confirm the transaction in your wallet.";
-
-        const tx = await contract.claimMonthlyRoyalty();
-
-        button.innerText = "Claiming...";
-        status.innerText = "Transaction submitted. Waiting for confirmation...";
-
-        await tx.wait();
-
-        await loadMonthlyRoyaltyData();
-        await loadData();
-        await loadUserData();
-
-        status.innerText = "Monthly Royalty claimed successfully!";
-    } catch (error) {
-        console.error("Monthly claim error:", error);
-
-        status.innerText =
-            error?.reason ||
-            (error?.code === 4001
-                ? "Transaction cancelled in wallet."
-                : "Monthly Royalty claim failed.");
-
-        await loadMonthlyRoyaltyData();
-    } finally {
-        button.disabled = false;
-        await loadMonthlyRoyaltyData();
-    }
+    handleTx(contract.claimMonthlyRoyalty());
 }
 
 
@@ -828,9 +786,13 @@ async function showSystem(){
   document.getElementById("epochWeight").innerText = "⏳ Loading...";
   document.getElementById("epochStart").innerText = "⏳ Loading...";
   document.getElementById("nextEpoch").innerText = "⏳ Loading...";
-
+  
+  document.getElementById("monthlyEpochTimeLeft").innerText = "⏳ Loading...";
+  document.getElementById("pendingMonthlyRoyaltyUSDT").innerText = "⏳ Loading...";
+  
   // ✅ FETCH DATA
   await loadData();
+  await loadMonthlyRoyaltyData();
 }
 
 
@@ -852,9 +814,12 @@ async function showUser(){
   document.getElementById("referrer").innerText = "⏳ Loading...";
   document.getElementById("lastEpochRewardUSDT").innerText = "⏳ Loading...";
   document.getElementById("lastClaimEpoch").innerText = "⏳ Loading...";
+  document.getElementById("lastMonthlyRewardUSDT").innerText = "⏳ Loading...";
+
   
   // ✅ FETCH DATA
   await loadUserData();
+  await loadMonthlyRoyaltyData();
 }
 
 
