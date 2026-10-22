@@ -70,6 +70,13 @@ const abi = [
     "function getUserJoinEpoch(address) view returns(uint256)",
     "function getUserLastClaimEpoch(address) view returns(uint256)",
     "function getTotalInvestedUSDT(address) view returns(uint256)",
+    
+    "function currentMonthlyEpoch() view returns(uint256)",
+    "function getMonthlyEpochStatus() view returns(bool,uint256)",
+    "function pendingMonthlyRoyalty(address) view returns(uint256)",
+    "function getLastMonthlyRewardSnapshot() view returns(uint256)",
+    "function claimMonthlyRoyalty()",
+    "function monthlyRewardPoolUSDT() view returns(uint256)",
 
     "event Registered(address indexed user,address indexed referrer)",
     "event LevelJoined(address indexed user,uint8 level,uint256 usdtAmount)",
@@ -162,7 +169,8 @@ async function connectWallet() {
   await loadUserData();
 
   await loadBigCoinData();   
-
+  await loadMonthlyRoyaltyData();
+      
   document.getElementById("systemBox").style.display = "grid";
   document.getElementById("userBox").style.display = "none";
 
@@ -272,6 +280,84 @@ async function loadData(){
   }
 }
 
+
+
+async function loadMonthlyRoyaltyData() {
+    if (!contract || !user) return;
+
+    try {
+        const [
+            monthlyEpoch,
+            monthlyPool,
+            pending,
+            lastSnapshot,
+            epochStatus
+        ] = await Promise.all([
+            contract.currentMonthlyEpoch(),
+            contract.monthlyRewardPoolUSDT(),
+            contract.pendingMonthlyRoyalty(user),
+            contract.getLastMonthlyRewardSnapshot(),
+            contract.getMonthlyEpochStatus()
+        ]);
+
+        document.getElementById("pendingMonthlyRoyaltyUSDT").innerText =
+            formatUSDT(pending);
+
+        document.getElementById("lastMonthlyRewardUSDT").innerText =
+            formatUSDT(lastSnapshot);
+
+        // Time left until monthly epoch ends
+        const isEnded = epochStatus[0];
+        const timeLeft = Number(epochStatus[1]);
+
+        const timeElement =
+            document.getElementById("monthlyEpochTimeLeft");
+
+        if (isEnded) {
+            timeElement.innerText = "Round Ended";
+        } else {
+            const days = Math.floor(timeLeft / 86400);
+            const hours = Math.floor((timeLeft % 86400) / 3600);
+            const minutes = Math.floor((timeLeft % 3600) / 60);
+
+            timeElement.innerText =
+                `${days}d ${hours}h ${minutes}m`;
+        }
+
+        const claimButton =
+            document.getElementById("claimMonthlyRoyaltyBtn");
+
+        if (claimButton) {
+            claimButton.disabled = pending.isZero();
+            claimButton.innerText = pending.isZero()
+                ? "No Monthly Royalty Available"
+                : "Claim Monthly Royalty";
+        }
+
+        const statusElement =
+            document.getElementById("monthlyRoyaltyStatus");
+
+        if (statusElement) {
+            statusElement.innerText = pending.isZero()
+                ? "No pending monthly royalty available."
+                : "Your monthly royalty is available to claim.";
+        }
+
+    } catch (error) {
+        console.error("Monthly Royalty data error:", error);
+
+        const statusElement =
+            document.getElementById("monthlyRoyaltyStatus");
+
+        if (statusElement) {
+            statusElement.innerText =
+                "Unable to load monthly royalty details.";
+        }
+    }
+}
+
+
+
 // ========================== TIMER ==========================
 // ========================== TIMER ==========================
 function startTimers() {
@@ -328,6 +414,7 @@ async function handleTx(tx){
     await loadData();
     await loadUserData();  
     await loadBigCoinData();
+    await loadMonthlyRoyaltyData();
 
     document.getElementById("status").innerHTML =
       `<span class="tx-success">✅ Transaction Confirmed</span>`;
@@ -382,6 +469,52 @@ async function claimReward(){
   handleTx(contract.claimReward());
 }
 
+
+async function claimMonthlyRoyalty() {
+    if (!contract || !user) {
+        document.getElementById("monthlyRoyaltyStatus").innerText =
+            "Please connect your wallet first.";
+        return;
+    }
+
+    const button =
+        document.getElementById("claimMonthlyRoyaltyBtn");
+
+    const status =
+        document.getElementById("monthlyRoyaltyStatus");
+
+    try {
+        button.disabled = true;
+        button.innerText = "Confirm in Wallet...";
+        status.innerText = "Please confirm the transaction in your wallet.";
+
+        const tx = await contract.claimMonthlyRoyalty();
+
+        button.innerText = "Claiming...";
+        status.innerText = "Transaction submitted. Waiting for confirmation...";
+
+        await tx.wait();
+
+        await loadMonthlyRoyaltyData();
+        await loadData();
+        await loadUserData();
+
+        status.innerText = "Monthly Royalty claimed successfully!";
+    } catch (error) {
+        console.error("Monthly claim error:", error);
+
+        status.innerText =
+            error?.reason ||
+            (error?.code === 4001
+                ? "Transaction cancelled in wallet."
+                : "Monthly Royalty claim failed.");
+
+        await loadMonthlyRoyaltyData();
+    } finally {
+        button.disabled = false;
+        await loadMonthlyRoyaltyData();
+    }
+}
 
 
 async function loadBigCoinData() {
