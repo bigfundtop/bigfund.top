@@ -301,10 +301,10 @@ async function loadMonthlyRoyaltyData() {
         ]);
 
         document.getElementById("pendingMonthlyRoyaltyUSDT").innerText =
-             Number(ethers.utils.formatUnits(pending, 6)).toFixed(2);
+          Number(formatUSDT(pending)).toFixed(2);
 
         document.getElementById("lastMonthlyRewardUSDT").innerText =
-             Number(ethers.utils.formatUnits(snapshot, 6)).toFixed(2);
+            Number(formatUSDT(lastSnapshot)).toFixed(2);
 
         // Time left until monthly epoch ends
         const isEnded = epochStatus[0];
