@@ -27,7 +27,7 @@ const usernameABI = [
 ];
 
 // Replace with your NEW deployed BigFund rewards contract address.
-const contractAddress = "0x9F2F339E1623482C913f89957E91be44514036C5";
+const contractAddress = "0xed4f7B19694300989665Ae7a22e024f374cB08B8";
 
 const usdtAddress =
     "0xc2132D05D31c914a87C6611C10748AEb04B58e8F";
@@ -871,7 +871,7 @@ async function loadLeaderboard(){
 // READ EVENTS (DEBUG)
 // ==========================
 
-const DEPLOY_BLOCK = 95867491;
+const DEPLOY_BLOCK = 95964695;
 
 const latestBlock = await provider.getBlockNumber();
 
