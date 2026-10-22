@@ -207,6 +207,16 @@ Connect Wallet
     Pending Reward (USDT)<br>
     <span id="pendingUSDT">0.0000</span>
 </div>
+<div class="info-card">
+    <div>Pending Monthly Royalty (USDT)</div>
+    <strong id="pendingMonthlyRoyaltyUSDT">0.00</strong>
+</div>
+
+<div class="info-card">
+    <div>Monthly Round Time Left</div>
+    <strong id="monthlyEpochTimeLeft">--</strong>
+</div>
+  
 </div>
 
 <!-- USER INFO -->
@@ -224,6 +234,11 @@ Connect Wallet
     Last round Royalty pool (USDT)<br>
     <span id="lastEpochRewardUSDT">0.0000</span>
 </div>
+<div class="info-card">
+    <div>Last Monthly Reward Snapshot (USDT)</div>
+    <strong id="lastMonthlyRewardUSDT">0.00</strong>
+</div>
+  
 </div>
 
 </div>
@@ -262,6 +277,16 @@ Connect Wallet
 <button class="claimRewardBtn" onclick="claimReward()">Claim weekly Royalty</button>
 </div>
 
+<button
+    id="claimMonthlyRoyaltyBtn"
+    class="claimRewardBtn"
+    onclick="claimMonthlyRoyalty()">
+    Claim Monthly Royalty
+</button>
+
+<p id="monthlyRoyaltyStatus"></p>
+
+  
 <div class="card">
 <h2>Transaction Status</h2>
 <p id="status"></p>
