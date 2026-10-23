@@ -301,7 +301,11 @@ async function loadMonthlyRoyaltyData() {
         ]);
 
         document.getElementById("pendingMonthlyRoyaltyUSDT").innerText =
-          Number(formatUSDT(pending)).toFixed(2);
+            Number(formatUSDT(pending)).toFixed(2);
+
+        
+        document.getElementById("monthlyRewardPoolUSDT").innerText =
+            Number(formatUSDT(monthlyPool)).toFixed(2);
 
         document.getElementById("lastMonthlyRewardUSDT").innerText =
             Number(formatUSDT(lastSnapshot)).toFixed(2);
