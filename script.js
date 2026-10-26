@@ -1727,11 +1727,5 @@ if (!bfPoolTimerStarted) {
             bfPoolSecondsLeft--;
             updateBigFundCountdown();
         }
-    }, 1000);
-
-    setInterval(() => {
-        if (contract && user) {
-            loadBigFundPoolData();
-        }
-    }, 60000);
+    }, 1000); 
 }
