@@ -3008,3 +3008,273 @@ button.mainBtn {
 .my-menu {
     margin-top: 27px !important;
 }
+
+
+
+
+
+/* ================= BIGFUND POOL ================= */
+
+.bf-pool-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 20px auto;
+    padding: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(217, 183, 91, 0.55);
+    border-radius: 18px;
+    background:
+        radial-gradient(ellipse at top right,
+        rgba(217, 183, 91, 0.13), transparent 48%),
+        linear-gradient(145deg, #111111, #050505 75%);
+    color: #ffffff;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.bf-pool-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.bf-pool-tag {
+    display: inline-block;
+    color: #d9b75b;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.bf-pool-header h2 {
+    margin: 8px 0 5px;
+    color: #f4d98b;
+    font-size: 25px;
+    line-height: 1.2;
+}
+
+.bf-pool-header p {
+    margin: 0;
+    color: #bdbdbd;
+    font-size: 13px;
+}
+
+.bf-pool-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 54px;
+    width: 54px;
+    height: 54px;
+    border: 1px solid #b99745;
+    border-radius: 16px;
+    background: rgba(217, 183, 91, 0.09);
+    font-size: 27px;
+}
+
+.bf-pool-highlight {
+    padding: 19px 14px;
+    border: 1px solid rgba(217, 183, 91, 0.4);
+    border-radius: 14px;
+    background: linear-gradient(120deg, #201a0d, #111111);
+    text-align: center;
+}
+
+.bf-pool-highlight > span:first-child {
+    color: #e0c779;
+    font-size: 13px;
+}
+
+.bf-pool-amount {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 9px 0;
+}
+
+.bf-pool-amount strong {
+    color: #f7d979;
+    font-size: clamp(27px, 7vw, 38px);
+    overflow-wrap: anywhere;
+}
+
+.bf-pool-amount small {
+    color: #e8e8e8;
+    font-size: 13px;
+}
+
+.bf-pool-caption {
+    color: #999999;
+    font-size: 11px;
+}
+
+.bf-pool-stats {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 13px;
+}
+
+.bf-pool-stat {
+    min-width: 0;
+    padding: 13px 11px;
+    border: 1px solid #292929;
+    border-radius: 11px;
+    background: #101010;
+}
+
+.bf-pool-stat span {
+    display: block;
+    margin-bottom: 8px;
+    color: #a9a9a9;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.bf-pool-stat strong {
+    display: block;
+    color: #f0d27a;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+.bf-pool-countdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 13px;
+    padding: 14px;
+    border-radius: 11px;
+    background: #19160e;
+    border: 1px solid #514322;
+}
+
+.bf-pool-countdown span {
+    color: #cbb778;
+    font-size: 12px;
+}
+
+.bf-pool-countdown strong {
+    color: #ffffff;
+    font-size: 19px;
+    overflow-wrap: anywhere;
+}
+
+.bf-pool-pending {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 15px 12px;
+    border-radius: 11px;
+    background: #111811;
+    border: 1px solid #344531;
+}
+
+.bf-pool-pending > span {
+    color: #c5c5c5;
+    font-size: 12px;
+}
+
+.bf-pool-pending strong {
+    color: #bde8a6;
+    font-size: 15px;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.bf-pool-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.bf-pool-actions button {
+    display: block;
+    width: 100%;
+    min-height: 46px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 12px;
+    border: 1px solid #d9b75b;
+    border-radius: 10px;
+    background: linear-gradient(110deg, #e8cb78, #c5a044);
+    color: #111111;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.bf-pool-actions button:disabled {
+    border-color: #414141;
+    background: #292929;
+    color: #929292;
+    cursor: not-allowed;
+}
+
+.bf-pool-actions #bfRefreshBtn {
+    border-color: #51472c;
+    background: #171717;
+    color: #e5cc7e;
+}
+
+.bf-pool-status {
+    min-height: 18px;
+    margin: 13px 0;
+    color: #d8c98f;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.bf-pool-note {
+    margin-top: 16px;
+    padding: 13px;
+    border-left: 3px solid #b99745;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.bf-pool-note strong {
+    color: #e7cb7b;
+    font-size: 13px;
+}
+
+.bf-pool-note p {
+    color: #cccccc;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.bf-pool-note small {
+    display: block;
+    color: #929292;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+@media (min-width: 600px) {
+    .bf-pool-card {
+        padding: 24px;
+    }
+
+    .bf-pool-stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .bf-pool-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .bf-pool-actions #bfRefreshBtn {
+        grid-column: 1 / -1;
+    }
+}
+
+
