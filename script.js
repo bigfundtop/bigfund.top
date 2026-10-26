@@ -81,7 +81,24 @@ const abi = [
     "event Registered(address indexed user,address indexed referrer)",
     "event LevelJoined(address indexed user,uint8 level,uint256 usdtAmount)",
     "event RewardClaimed(address indexed user,uint256 usdtReward,uint256 epoch,uint256 blockNumber)",
-    "event IncomeWithdrawn(address indexed user,uint256 gross,uint256 tax,uint256 net)"
+    "event IncomeWithdrawn(address indexed user,uint256 gross,uint256 tax,uint256 net)",
+    
+    // ===== BIGFUND POOL READ FUNCTIONS =====
+    "function bigFundPoolUSDT() view returns(uint256)",
+    "function bigFundRewardSnapshotUSDT() view returns(uint256)",
+    "function currentBigFundEpoch() view returns(uint256)",
+    "function getBigFundEpochStatus() view returns(bool,uint256)",
+    "function getBigFundHolderStatus(address) view returns(bool)",
+    "function getBigFundHolderID(address) view returns(uint256)",
+    "function getBigFundHolderWeight(address) view returns(uint256)",
+    "function getTotalBigFundWeight() view returns(uint256)",
+    "function pendingBigFundReward(address) view returns(uint256)",
+    "function isEligibleForBigFundHolder(address) view returns(bool)",
+
+    // ===== BIGFUND POOL TRANSACTIONS =====
+    "function joinBigFundPool()",
+    "function claimBigFundPool()"
+
 ];
 
 const usdtABI = [
@@ -170,6 +187,7 @@ async function connectWallet() {
 
   await loadBigCoinData();   
   await loadMonthlyRoyaltyData();
+  await loadBigFundPoolData();
       
   document.getElementById("systemBox").style.display = "grid";
   document.getElementById("userBox").style.display = "none";
@@ -419,6 +437,7 @@ async function handleTx(tx){
     await loadUserData();  
     await loadBigCoinData();
     await loadMonthlyRoyaltyData();
+    await loadBigFundPoolData();
 
     document.getElementById("status").innerHTML =
       `<span class="tx-success">✅ Transaction Confirmed</span>`;
@@ -1453,3 +1472,266 @@ window.addEventListener("scroll", function () {
         btn.style.removeProperty("z-index");
     }
 });
+
+
+
+
+
+
+
+/* ==========================================
+   BIGFUND POOL DASHBOARD
+========================================== */
+
+let bfPoolTimerStarted = false;
+let bfPoolSecondsLeft = 0;
+let bfPoolEnded = false;
+
+// USDT amount formatting
+function bfFormatUSDT(value) {
+    return Number(
+        ethers.utils.formatUnits(value, 6)
+    ).toFixed(2);
+}
+
+// Load all BigFund Pool details
+async function loadBigFundPoolData() {
+
+    const status = document.getElementById("bfPoolStatus");
+    const joinBtn = document.getElementById("bfJoinBtn");
+    const claimBtn = document.getElementById("bfClaimBtn");
+
+    if (!contract || !user) {
+        status.innerText = "Connect your wallet first.";
+        return;
+    }
+
+    try {
+        status.innerText = "Loading BigFund Pool details...";
+
+        const [
+            pool,
+            snapshot,
+            epoch,
+            epochStatus,
+            isHolder,
+            holderID,
+            holderWeight,
+            totalWeight,
+            pending,
+            eligible
+        ] = await Promise.all([
+            contract.bigFundPoolUSDT(),
+            contract.bigFundRewardSnapshotUSDT(),
+            contract.currentBigFundEpoch(),
+            contract.getBigFundEpochStatus(),
+            contract.getBigFundHolderStatus(user),
+            contract.getBigFundHolderID(user),
+            contract.getBigFundHolderWeight(user),
+            contract.getTotalBigFundWeight(),
+            contract.pendingBigFundReward(user),
+            contract.isEligibleForBigFundHolder(user)
+        ]);
+
+        // Display pool balance
+        document.getElementById("bfPoolBalance").innerText =
+            bfFormatUSDT(pool);
+
+        // Display reward snapshot
+        document.getElementById("bfRewardSnapshot").innerText =
+            bfFormatUSDT(snapshot);
+
+        // Display current BigFund round
+        document.getElementById("bfCurrentEpoch").innerText =
+            epoch.toString();
+
+        // Display holder information
+        document.getElementById("bfHolderStatus").innerText =
+            isHolder ? "Joined ✓" : eligible ? "Eligible" : "Not Eligible";
+
+        document.getElementById("bfHolderID").innerText =
+            isHolder ? holderID.toString() : "--";
+
+        document.getElementById("bfHolderWeight").innerText =
+            holderWeight.toString();
+
+        document.getElementById("bfTotalHolderWeight").innerText =
+            totalWeight.toString();
+
+        // Display pending reward
+        document.getElementById("bfPendingReward").innerText =
+            bfFormatUSDT(pending);
+
+        // Countdown: contract returns ended status and remaining seconds
+        bfPoolEnded = epochStatus[0];
+        bfPoolSecondsLeft = Number(epochStatus[1]);
+
+        updateBigFundCountdown();
+
+        // Join only when eligible and not already registered as holder
+        joinBtn.disabled = isHolder || !eligible;
+
+        joinBtn.innerText = isHolder
+            ? "Already Joined"
+            : eligible
+                ? "Join BigFund Pool"
+                : "Level / Royalty Requirement Not Met";
+
+        // Claim button is available only to holders with a pending reward
+        const canClaim =
+            isHolder && pending.gt(0);
+
+        claimBtn.disabled = !canClaim;
+
+        claimBtn.innerText = canClaim
+            ? "Claim BigFund Reward"
+            : !isHolder
+                ? "Join Pool First"
+                : "No Pending Reward";
+
+        if (!eligible && !isHolder) {
+            status.innerText =
+                "Not eligible yet. Check your level and royalty requirements.";
+        } else if (isHolder && pending.gt(0)) {
+            status.innerText =
+                "Pending reward detected. Check the round and confirm your claim in your wallet.";
+        } else if (isHolder) {
+            status.innerText =
+                "You are a BigFund holder. No pending reward is currently available.";
+        } else {
+            status.innerText =
+                "You are eligible to join the BigFund Pool.";
+        }
+
+    } catch (err) {
+        console.error("BigFund Pool load error:", err);
+
+        status.innerText =
+            "Unable to load BigFund Pool data. Check the contract address, ABI and network.";
+    }
+}
+
+
+// Countdown display
+function updateBigFundCountdown() {
+
+    const el = document.getElementById("bfPoolTimeLeft");
+
+    if (bfPoolEnded) {
+        el.innerText = "Round Ended";
+        return;
+    }
+
+    const days = Math.floor(bfPoolSecondsLeft / 86400);
+    const hours = Math.floor((bfPoolSecondsLeft % 86400) / 3600);
+    const minutes = Math.floor((bfPoolSecondsLeft % 3600) / 60);
+    const seconds = bfPoolSecondsLeft % 60;
+
+    el.innerText =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+
+// Join BigFund Pool
+async function joinBigFundPool() {
+
+    if (!contract || !user) {
+        alert("Connect wallet first.");
+        return;
+    }
+
+    const btn = document.getElementById("bfJoinBtn");
+    const status = document.getElementById("bfPoolStatus");
+
+    try {
+        btn.disabled = true;
+        btn.innerText = "Confirm in Wallet...";
+        status.innerText = "Confirm the Join transaction in your wallet.";
+
+        const tx = await contract.joinBigFundPool();
+
+        status.innerText = "Transaction submitted. Waiting for confirmation...";
+
+        await tx.wait();
+
+        status.innerText = "BigFund Pool join transaction confirmed.";
+
+        await loadBigFundPoolData();
+        await loadUserData();
+
+    } catch (err) {
+        console.error("BigFund join error:", err);
+
+        status.innerText =
+            err?.reason ||
+            err?.error?.message ||
+            (err?.code === 4001
+                ? "Transaction cancelled in wallet."
+                : "Join failed. Check eligibility and contract requirements.");
+
+        await loadBigFundPoolData();
+    }
+}
+
+
+// Claim BigFund Pool reward
+async function claimBigFundPool() {
+
+    if (!contract || !user) {
+        alert("Connect wallet first.");
+        return;
+    }
+
+    const btn = document.getElementById("bfClaimBtn");
+    const status = document.getElementById("bfPoolStatus");
+
+    try {
+        btn.disabled = true;
+        btn.innerText = "Confirm in Wallet...";
+        status.innerText = "Confirm the BigFund reward claim in your wallet.";
+
+        const tx = await contract.claimBigFundPool();
+
+        status.innerText = "Claim transaction submitted. Waiting for confirmation...";
+
+        await tx.wait();
+
+        status.innerText = "BigFund Pool claim transaction confirmed.";
+
+        await loadBigFundPoolData();
+        await loadUserData();
+        await loadData();
+
+    } catch (err) {
+        console.error("BigFund claim error:", err);
+
+        status.innerText =
+            err?.reason ||
+            err?.error?.message ||
+            (err?.code === 4001
+                ? "Transaction cancelled in wallet."
+                : "Claim failed. Check round status and claim eligibility.");
+
+        await loadBigFundPoolData();
+    }
+}
+
+
+// Update countdown once per second.
+// Refresh on-chain status periodically to avoid stale data.
+if (!bfPoolTimerStarted) {
+    bfPoolTimerStarted = true;
+
+    setInterval(() => {
+        if (!bfPoolEnded && bfPoolSecondsLeft > 0) {
+            bfPoolSecondsLeft--;
+            updateBigFundCountdown();
+        }
+    }, 1000);
+
+    setInterval(() => {
+        if (contract && user) {
+            loadBigFundPoolData();
+        }
+    }, 60000);
+}
