@@ -295,6 +295,105 @@ Connect Wallet
 
 
 
+<!-- ================= BIGFUND POOL DETAILS ================= -->
+<section class="bf-pool-card" id="bigFundPoolSection">
+
+  <div class="bf-pool-header">
+    <div>
+      <span class="bf-pool-tag">BIGFUND ECOSYSTEM</span>
+      <h2>🏆 BigFund Pool</h2>
+      <p>90-Day Holder Rewards</p>
+    </div>
+    <div class="bf-pool-icon">💎</div>
+  </div>
+
+  <div class="bf-pool-highlight">
+    <span>BigFund Pool Balance</span>
+    <div class="bf-pool-amount">
+      <strong id="bfPoolBalance">0.00</strong>
+      <small>USDT</small>
+    </div>
+    <span class="bf-pool-caption">Current pool balance</span>
+  </div>
+
+  <div class="bf-pool-stats">
+
+    <div class="bf-pool-stat">
+      <span>Holder Status</span>
+      <strong id="bfHolderStatus">Checking...</strong>
+    </div>
+
+    <div class="bf-pool-stat">
+      <span>Your Holder ID</span>
+      <strong id="bfHolderID">--</strong>
+    </div>
+
+    <div class="bf-pool-stat">
+      <span>Your Holder Shares</span>
+      <strong id="bfHolderWeight">0</strong>
+    </div>
+
+    <div class="bf-pool-stat">
+      <span>Total Holder Shares</span>
+      <strong id="bfTotalHolderWeight">0</strong>
+    </div>
+
+    <div class="bf-pool-stat">
+      <span>Reward Snapshot</span>
+      <strong><span id="bfRewardSnapshot">0.00</span> USDT</strong>
+    </div>
+
+    <div class="bf-pool-stat">
+      <span>90-Day Round</span>
+      <strong id="bfCurrentEpoch">0</strong>
+    </div>
+
+  </div>
+
+  <div class="bf-pool-countdown">
+    <span>⏳ BigFund Round Countdown</span>
+    <strong id="bfPoolTimeLeft">--</strong>
+  </div>
+
+  <div class="bf-pool-pending">
+    <span>Your Pending BigFund Reward</span>
+    <strong><span id="bfPendingReward">0.00</span> USDT</strong>
+  </div>
+
+  <div class="bf-pool-actions">
+    <button id="bfJoinBtn" onclick="joinBigFundPool()">
+      Join BigFund Pool
+    </button>
+
+    <button id="bfClaimBtn" onclick="claimBigFundPool()">
+      Claim BigFund Reward
+    </button>
+
+    <button id="bfRefreshBtn" onclick="loadBigFundPoolData()">
+      ↻ Refresh Pool Details
+    </button>
+  </div>
+
+  <p id="bfPoolStatus" class="bf-pool-status">
+    Connect your wallet to view BigFund Pool details.
+  </p>
+
+  <div class="bf-pool-note">
+    <strong>How it works</strong>
+    <p>
+      Eligible Level 8, Level 9 and Level 10 users may join the
+      BigFund Pool after meeting the contract's royalty requirements.
+      Holder shares determine each eligible holder's proportional
+      reward, according to the contract's snapshot and claim rules.
+    </p>
+    <small>
+      Eligibility, round completion and claim availability are
+      determined by the deployed smart contract.
+    </small>
+  </div>
+
+</section>
+<!-- ================= END BIGFUND POOL ================= -->
 
 <!-- ================= LEADERBOARD ================= -->
 
