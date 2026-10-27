@@ -840,6 +840,7 @@ async function showUser(){
   document.getElementById("lastEpochRewardUSDT").innerText = "⏳ Loading...";
   document.getElementById("lastClaimEpoch").innerText = "⏳ Loading...";
   document.getElementById("lastMonthlyRewardUSDT").innerText = "⏳ Loading...";
+  document.getElementById("totalRoyaltyEarnedUSDT").innerText = "⏳ Loading...";
 
   
   // ✅ FETCH DATA
