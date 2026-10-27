@@ -77,11 +77,13 @@ const abi = [
     "function getLastMonthlyRewardSnapshot() view returns(uint256)",
     "function claimMonthlyRoyalty()",
     "function monthlyRewardPoolUSDT() view returns(uint256)",
+    "function getTotalRoyaltyEarnedUSDT(address) view returns(uint256)",
 
     "event Registered(address indexed user,address indexed referrer)",
     "event LevelJoined(address indexed user,uint8 level,uint256 usdtAmount)",
     "event RewardClaimed(address indexed user,uint256 usdtReward,uint256 epoch,uint256 blockNumber)",
     "event IncomeWithdrawn(address indexed user,uint256 gross,uint256 tax,uint256 net)",
+    
     
     // ===== BIGFUND POOL READ FUNCTIONS =====
     "function bigFundPoolUSDT() view returns(uint256)",
@@ -866,6 +868,11 @@ async function loadUserData(){
     document.getElementById("userEarnedUSDT").innerText =
        Number(ethers.utils.formatUnits(
           await contract.getTotalEarnedUSDT(user), 6
+    )).toFixed(2);
+
+    document.getElementById("totalRoyaltyEarnedUSDT").innerText =
+       Number(ethers.utils.formatUnits(
+          await contract.getTotalRoyaltyEarnedUSDT(user), 6
     )).toFixed(2);
 
    document.getElementById("incomeBalanceUSDT").innerText =
