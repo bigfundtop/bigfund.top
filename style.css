@@ -3252,6 +3252,10 @@ button.mainBtn {
 
 
 
-
+.card:has(#status) {
+    border: 1px solid #333333 !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
 
 
