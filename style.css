@@ -831,6 +831,7 @@ h1{
 
 .register-card {
     position: relative;
+    border: 2px solid #64748b !important;
     border-radius: 15px;
     background: #020617;
 
