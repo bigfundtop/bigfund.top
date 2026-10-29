@@ -3282,19 +3282,37 @@ button.mainBtn {
 
 
 
-/* Remove glow around Register box */
-#registerBox.register-card {
+
+
+/* FORCE REMOVE REGISTER BOX GLOW */
+#registerBox,
+#registerBox.register-card,
+.card.register-card#registerBox {
     box-shadow: none !important;
     filter: none !important;
     text-shadow: none !important;
+    outline: none !important;
 }
 
-/* Remove decorative glow effects */
-#registerBox.register-card::before,
-#registerBox.register-card::after {
+/* Remove glow from inner elements */
+#registerBox *,
+#registerBox *::before,
+#registerBox *::after {
+    text-shadow: none !important;
     box-shadow: none !important;
     filter: none !important;
-    text-shadow: none !important;
-    opacity: 0 !important;
-    background: none !important;
 }
+
+/* Remove glow from pseudo-elements */
+#registerBox::before,
+#registerBox::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* Keep a clean gold border */
+#registerBox {
+    border: 2px solid #d4af37 !important;
+    border-radius: 22px;
+}
+
