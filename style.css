@@ -3278,3 +3278,23 @@ button.mainBtn {
 }
 
 
+
+
+
+
+/* Remove glow around Register box */
+#registerBox.register-card {
+    box-shadow: none !important;
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+/* Remove decorative glow effects */
+#registerBox.register-card::before,
+#registerBox.register-card::after {
+    box-shadow: none !important;
+    filter: none !important;
+    text-shadow: none !important;
+    opacity: 0 !important;
+    background: none !important;
+}
