@@ -3267,3 +3267,10 @@ button.mainBtn {
     box-shadow: none !important;
     animation: none !important;
 }
+
+
+#joinLevelsSection {
+    border: 1px solid #222222 !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
