@@ -3261,3 +3261,9 @@ button.mainBtn {
 }
 
 
+
+.card:has(button[onclick="approveUSDT()"]) {
+    border: 1px solid #222222 !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
