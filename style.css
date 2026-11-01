@@ -2109,7 +2109,7 @@ button#tabUser:not(.active) {
         display: grid !important;
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         gap: 10px !important;
-        background: #030617 !important;
+        background: #020412 !important;
         padding: 12px !important;
         border-radius: 10px !important;
         box-sizing: border-box;
