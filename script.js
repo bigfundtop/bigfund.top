@@ -882,6 +882,10 @@ async function loadUserData(){
     )).toFixed(2);
 
     document.getElementById("level").innerText = u[1];
+
+    document.getElementById("approveUSDTSection").style.display =
+        Number(u[1]) >= 1 ? "none" : "block";
+      
     // Update completed level button colours
    const completedLevel = Number(u[1]);
 
