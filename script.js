@@ -896,7 +896,7 @@ async function loadUserData(){
       
     document.getElementById("baseWeight").innerText = u[2];
     document.getElementById("tempWeight").innerText = u[3];
-    document.getElementById("lastClaimEpoch").innerText = u[4];
+    document.getElementById("lastClaimEpoch").innerText = u[5];
     document.getElementById("totalWeight").innerText =
       await contract.totalWeight();
 
