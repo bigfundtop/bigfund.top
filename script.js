@@ -13,7 +13,7 @@ let leaderboard = [];
 let usernameContract;
 
 // BIGFUNDToken deployed contract address
-const bigTokenAddress = "0x69d2F2c79497EcD6585Ba9ABbb6dFA8179Ae582F";
+const bigTokenAddress = "0x29BD9443e39F1A3d9AfE4ad6A9fF9254906FAf44";
 
 
 const usernameContractAddress =
