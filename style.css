@@ -3282,3 +3282,98 @@ button.mainBtn {
     box-shadow: none !important;
     animation: none !important;
 }
+
+
+
+
+
+
+
+/* TERMS ACCEPTANCE */
+
+.terms-accept {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin: 15px 0;
+    text-align: left;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #fff;
+}
+
+.terms-accept input {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: #ffb000;
+    flex-shrink: 0;
+}
+
+.terms-accept a {
+    color: #ffb900;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* DISABLED REGISTER BUTTON */
+
+#registerBtn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* TERMS POPUP */
+
+.terms-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.terms-content {
+    width: 100%;
+    max-width: 500px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #080b19;
+    border: 1px solid #d9a629;
+    border-radius: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #fff;
+}
+
+.terms-content h2 {
+    color: #ffbd32;
+    text-align: center;
+    margin-top: 0;
+}
+
+.terms-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #eee;
+}
+
+.terms-text strong {
+    color: #ffbd32;
+}
+
+.terms-content button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 13px;
+    border: none;
+    border-radius: 9px;
+    background: linear-gradient(90deg, #ff8800, #ffbd24);
+    color: #111;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
