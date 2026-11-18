@@ -55,12 +55,87 @@ Connect Wallet
 </button>
 
 
- <div class="card register-card" id="registerBox" style="margin-bottom:15px;">
-<h2>Register</h2>
+<div class="card register-card" id="registerBox" style="margin-bottom:15px;">
+    <h2>Register</h2>
+
+    <input id="ref" placeholder="Referral Address">
+
+    <div class="terms-accept">
+        <input type="checkbox" id="termsAccept">
+
+        <label for="termsAccept">
+            Before participating in BigFund, you must read and accept
+            <a href="javascript:void(0)" onclick="openTermsModal()">
+                Terms &amp; Conditions
+            </a>.
+        </label>
+    </div>
+
+    <button id="registerBtn" onclick="register()" disabled>
+        Register
+    </button>
+</div>
+
+<!-- TERMS AND CONDITIONS POPUP -->
+<div id="termsModal" class="terms-modal">
+    <div class="terms-content">
+
+        <h2>Terms &amp; Conditions</h2>
+
+        <div class="terms-text">
+            <p>
+                Before investing in BigFund, users must understand
+                the concept of the BigFund plan.
+            </p>
+
+            <p>
+                At the end of this website, you can find information
+                about the 100% fund distribution.
+            </p>
+
+            <p>
+                BigFund does not use your funds for trading or
+                other investments. Funds are distributed only
+                according to the smart contract rules and the
+                BigFund plan.
+            </p>
+
+            <p>
+                Please understand the complete plan presentation
+                before participating and invest with caution.
+            </p>
+
+            <p>
+                Invest only 5% to 10% of your personal savings.
+                Never invest using borrowed money or money obtained
+                by selling your personal belongings or assets.
+                Participate only with money you can afford to lose.
+            </p>
+
+            <p>
+                BigFund uses a crowdfunding process with the aim
+                of helping participants work towards financial
+                independence. However, rewards and financial
+                outcomes are not guaranteed.
+            </p>
+
+            <p>
+                Thank you for your interest in BigFund.
+            </p>
+
+            <p>
+                Regards,<br>
+                <strong>BigFund Official</strong>
+            </p>
+        </div>
+
+        <button type="button" onclick="closeTermsModal()">
+            OK
+        </button>
+
+    </div>
+</div>
   
-<input id="ref" placeholder="Referral Address">
-<button onclick="register()">Register</button>
-</div> 
   
 
 <!-- Welcome Image -->
