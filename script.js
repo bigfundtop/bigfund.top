@@ -1741,3 +1741,31 @@ if (!bfPoolTimerStarted) {
         }
     }, 1000); 
 }
+
+
+
+
+
+
+
+// TERMS & CONDITIONS
+const termsCheckbox = document.getElementById("termsAccept");
+const registerButton = document.getElementById("registerBtn");
+
+// Initially disable Register button
+registerButton.disabled = true;
+
+// Checkbox tick Register active
+termsCheckbox.addEventListener("change", function () {
+    registerButton.disabled = !this.checked;
+});
+
+// Open popup
+function openTermsModal() {
+    document.getElementById("termsModal").style.display = "flex";
+}
+
+// OK click popup close
+function closeTermsModal() {
+    document.getElementById("termsModal").style.display = "none";
+}
